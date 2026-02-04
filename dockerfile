@@ -6,7 +6,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install with longer timeout for cross-platform builds
-RUN pip install --timeout=300 --retries=5 -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY . .
 
