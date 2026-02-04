@@ -4,13 +4,36 @@ A mock weather MCP (Model Context Protocol) server that provides weather data fo
 
 ## Quickstart
 
-### 1. Install dependencies
+### 1. Create virtual environment
+
+```bash
+python -m venv .venv
+```
+
+### 2. Activate virtual environment
+
+**Linux / macOS / Codespace:**
+```bash
+source .venv/bin/activate
+```
+
+**Windows (PowerShell):**
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+**Windows (Command Prompt):**
+```cmd
+.venv\Scripts\activate.bat
+```
+
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Run the server
+### 4. Run the server
 
 ```bash
 python main.py
