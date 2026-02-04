@@ -70,12 +70,23 @@ http://localhost:8000/mcp
 // Returns: {"city": "Bangkok", "condition": "Sunny", "temperature": 28.5, "humidity": 65.2}
 ```
 
-## Supported Countries
+## Testing with HTTP File
 
-- USA
-- Canada
-- UK
-- Australia
-- India
-- Portugal
-- Thailand (supports both English and Thai city names)
+You can test the MCP endpoints using the included [test/test.http](test/test.http) file.
+
+### Prerequisites
+
+Install the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension in VS Code.
+
+### Run Tests
+
+1. Start the server: `python main.py`
+2. Open `test/test.http` in VS Code
+3. Click "Send Request" above any request to execute it
+
+### Available Tests
+
+- **Initialize** - Start MCP session
+- **List tools** - Discover available tools
+- **get_cities** - Get cities for Thailand, USA
+- **get_weather** - Get weather for cities (English and Thai names)
