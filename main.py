@@ -90,17 +90,19 @@ async def get_weather(city: str) -> str:
     return str(weather_info)
 
 
+# Create ASGI app at module level for uvicorn
+app = mcp.streamable_http_app()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    expose_headers=["mcp-session-id"],
+)
+
+
 def main():
-    # Get the ASGI app and add CORS middleware
-    app = mcp.streamable_http_app()
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=["*"],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-        expose_headers=["mcp-session-id"],
-    )
     uvicorn.run(app, host="0.0.0.0", port=8000)
 
 
