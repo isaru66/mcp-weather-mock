@@ -1,14 +1,21 @@
-FROM python:3.13.2-slim
+FROM python:3.13-slim
+
+# Prevent .pyc files and enable real-time log output
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Copy the requirements.txt file into the container
+# Install dependencies first (layer caching)
 COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install with longer timeout for cross-platform builds
-RUN pip install -r requirements.txt
-
+# Copy application code
 COPY . .
+
+# Run as non-root user
+RUN adduser --disabled-password --no-create-home appuser
+USER appuser
 
 EXPOSE 8000
 
