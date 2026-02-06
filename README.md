@@ -41,7 +41,36 @@ python main.py
 
 The server starts at `http://localhost:8000`.
 
-### 3. Connect from an MCP client
+## Docker Deployment
+
+### Build the Docker image
+
+```bash
+docker build -t mcp-weather-mock .
+```
+
+### Run the container
+
+```bash
+docker run -d -p 8000:8000 --name mcp-weather mcp-weather-mock
+```
+
+### Stop and remove the container
+
+```bash
+docker stop mcp-weather
+docker rm mcp-weather
+```
+
+### View container logs
+
+```bash
+docker logs mcp-weather
+```
+
+## MCP Client Connection
+
+### Connect from an MCP client
 
 Use the streamable HTTP endpoint:
 
