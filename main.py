@@ -26,6 +26,12 @@ THAI_CITIES = {
 # Reverse mapping (Thai -> English)
 THAI_TO_ENGLISH = {v: k for k, v in THAI_CITIES.items()}
 
+# Additional Thai name aliases -> canonical English name
+THAI_ALIASES = {
+    "กรุงเทพ": "Bangkok",
+    "กรุงเทพฯ": "Bangkok",
+}
+
 
 @mcp.tool()
 async def get_cities(country: str) -> str:
@@ -75,6 +81,8 @@ async def get_weather(city: str) -> str:
         english_name = city
     elif city in THAI_TO_ENGLISH:
         english_name = THAI_TO_ENGLISH[city]
+    elif city in THAI_ALIASES:
+        english_name = THAI_ALIASES[city]
     
     weather_conditions = ["Sunny", "Cloudy", "Rainy", "Snowy", "Windy"]
     temperature = random.uniform(-10, 35)
